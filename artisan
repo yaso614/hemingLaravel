@@ -1,0 +1,57 @@
+#!/usr/bin/env php
+<?php
+
+define('LARAVEL_START', microtime(true));
+
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll require it
+| into the script here so that we do not have to worry about the
+| loading of any our classes "manually". Feels great to relax.
+|
+*/
+
+require __DIR__.'/vendor/autoload.php';
+
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+/*
+|--------------------------------------------------------------------------
+| Run The Artisan Application
+|--------------------------------------------------------------------------
+|
+| When we run the console application, the current CLI command will be
+| executed in this console and the response sent back to a terminal
+| or another output device for the developers. Here goes nothing!
+| 콘솔 응용 프로그램을 실행하면 현재 콘솔 명령이이 콘솔에서 실행되고 
+| 응답이 개발자를 위해 터미널이나 다른 출력 장치로 다시 전송됩니다.
+| 여기 아무것도 없어!
+*/
+
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+
+$status = $kernel->handle(
+    $input = new Symfony\Component\Console\Input\ArgvInput,
+    new Symfony\Component\Console\Output\ConsoleOutput
+);
+
+/*
+|--------------------------------------------------------------------------
+| Shutdown The Application
+|--------------------------------------------------------------------------
+|
+| Once Artisan has finished running, we will fire off the shutdown events
+| so that any final work may be done by the application before we shut
+| down the process. This is the last thing to happen to the request.
+| Artisan이 실행을 마친 후에는 종료 이벤트를 시작하여 프로세스를 종료하기 전에 
+| 최종 작업을 응용 프로그램에서 수행 할 수 있습니다.
+| 이것은 요청에 대해 일어나는 마지막 일입니다.
+*/
+
+$kernel->terminate($input, $status);
+
+exit($status);
