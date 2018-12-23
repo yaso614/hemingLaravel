@@ -13,6 +13,28 @@
 | 이제 멋진 것을 만들어보세요!
 */
 
-Route::get('/', function () {
-    return view('dragon');
+/* 
+  para URL 파라미터를 아라비아 숫자, 영어 소문자, 영어 대문자로
+  구성된 3글자로 한정하는 정규표현식을 이용한 URL파라미터 패턴
+*/
+// Route::pattern('para', '[0-9a-zA-Z]{3}');
+
+Route::get('/', [
+    'as' => 'father',
+    function () {
+        return 'The son finds his father angrily.';
+    }
+]);
+
+Route::get('/son', function () {
+    return redirect(route("father"));
 });
+
+
+// Route::get('/{para?}', function ($text = 'fail') {
+//     return $text;
+// })->where('para', '[0-9a-zA-Z]{4}');
+
+
+
+
