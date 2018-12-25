@@ -22,7 +22,10 @@
 Route::get('/', [
     'as' => 'father',
     function () {
-        return 'The son finds his father angrily.';
+        return view('king.dragon',[
+            'name' => 'Dragon',
+            'greeting' => '안룡하세요?'
+        ]);
     }
 ]);
 
