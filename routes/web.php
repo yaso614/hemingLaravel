@@ -22,9 +22,9 @@
 Route::get('/', [
     'as' => 'father',
     function () {
-        return view('king.dragon',[
-            'name' => 'Dragon',
-            'greeting' => '안룡하세요?'
+        return view('welcome',[
+            'weapone' => '낡은장검',
+            'armor' => '체인메일',
         ]);
     }
 ]);
