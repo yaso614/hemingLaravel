@@ -1,0 +1,13 @@
+POST http://127.0.0.1:8000/articles/123/edit
+
+###
+
+PUT http://127.0.0.1:8000/articles/1
+
+
+###
+
+POST http://127.0.0.1:8000/articles
+
+
+

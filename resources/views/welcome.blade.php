@@ -85,17 +85,11 @@
                 </div>
 
                 <div class="links">
-                @component('alert',['fire'=>'불','water'=>'물'])
-                    @slot('title')
-                        {{$weapone}}
-                    @endslot
-                    
-                    @slot('dragon')
-                        dragon is alive
-                    @endslot
-
-                    You are not allowed to access this resource!
-                @endcomponent
+                <ul>
+                    <li>laravel</li>
+                    <li>Laravel</li>
+                    <li>라라벨</li>
+                </ul>
                 </div>
             </div>
         </div>
