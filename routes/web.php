@@ -12,11 +12,29 @@
 | 이 경로는 "web"미들웨어 그룹을 포함하는 그룹 내의 RouteServiceProvider에 의해로드됩니다.
 | 이제 멋진 것을 만들어보세요!
 */
-Route::resource('articles','ArticlesController');
-Route::get('/', 'WelcomeController@index');
 
-Route::get('/son', function () {
-    return redirect(route("father"));
+Route::get('/', 'WelcomeController@index')->name('home');
+
+Route::get('auth/login', function () {
+    $credential = [
+        'email' => 'john@example.com',
+        'password' => 'password'
+    ];
+
+    if (! auth()->attempt($credential)) {
+        return '로그인 정보가 정확하지 않습니다.';
+    }
+
+    return redirect('protected');
+});
+
+Route::get('protected', ['middleware' => 'auth', function () {
+    return '로그인했어요'.auth()->user()->name;
+}]);
+
+Route::get('auth/logout', function () {
+    auth()->logout();
+    return '또 봐요~';
 });
 
 
@@ -27,3 +45,7 @@ Route::get('/son', function () {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
