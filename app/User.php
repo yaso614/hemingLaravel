@@ -10,6 +10,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function articles() 
+    {
+        return $this->hasMany(Article::class);
+    }
+
+
     /**
      * The attributes that are mass assignable.
      * 대량할당할 수 있는 속성
