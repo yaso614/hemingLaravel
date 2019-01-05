@@ -13,6 +13,12 @@
 | 이제 멋진 것을 만들어보세요!
 */
 
+/* 실험용 이벤트 함수... 주석처리해둠
+DB::listen(function ($query){
+    var_dump($query->sql);
+  }); */
+
+Route::resource('articles', 'ArticlesController');
 Route::get('/', 'WelcomeController@index')->name('home');
 
 Route::get('auth/login', function () {
